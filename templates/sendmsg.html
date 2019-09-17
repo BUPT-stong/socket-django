@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-{% csrf_token %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,6 +11,7 @@
 <button onclick="javascript:sendmsg()">推送</button>
 <script>
     function sendmsg() {
+        {# 添加了csrfmiddlewaretoken参数 #}
         $.post("/send/", {msg: $("#msg").val(), csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val()}, function (result) {
             if (result.msg == "success") {
                 alert("消息推送成功")
